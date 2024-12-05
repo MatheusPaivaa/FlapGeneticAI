@@ -5,12 +5,11 @@
   <a href="#estrutura-do-projeto">Estrutura do Projeto</a> • 
   <a href="#instalacao">Instalação</a> • 
   <a href="#uso">Uso</a> • 
-  <a href="#dataset">Conjunto de Dados</a> • 
   <a href="#algoritmos-e-modelos">Algoritmos e Modelos</a> •
   <a href="#resultados">Resultados</a> •
-  <a href="#contribuindo">Contribuindo</a> •
+  <a href="#contribuindo">Contribuição</a> •
   <a href="#licenca">Licença</a> •
-  <a href="#agradecimentos">Agradecimentos</a>
+  <a href="#agradecimentos">Agradecimentos</a> •
   <a href="#bibliografia">Bibliografia</a>
 </p>
 
