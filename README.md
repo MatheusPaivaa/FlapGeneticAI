@@ -68,6 +68,9 @@ A nova geração substitui a antiga total ou parcialmente.
 ## <div id="resultados"></div>Resultados
 ...
 
+## <div id="video"></div>Vídeo de apresentação
+[link para o video]
+
 ## <div id="contributing"></div>Contribuição
 Contribuições são bem-vindas! Por favor, faça um fork do repositório e envie um pull request com suas alterações.
 
