@@ -28,7 +28,7 @@ Este projeto explora a aplicação de algoritmos evolutivos para treinar um agen
 
 ## <div id="algoritmos-e-modelos"></div>Algoritmos e Modelos
 
-[breve introdução sobre o algoritmo evolutivo ....]
+O algoritmo que utilizamos neste projeto é inspirado no processo de seleção natural, em que soluções candidatas (indivíduos) são evoluídas ao longo de várias gerações para resolver problemas complexos. Ele simula o comportamento de populações biológicas, aplicando processos como seleção, crossover(recombinação), mutação e substituição, com o objetivo de melhorar a qualidade das soluções e tentando sempre manter a diversidade genética.
 
 ### 1. Inicialização da população
 
@@ -93,7 +93,7 @@ Gostaríamos de agradecer a Eduardo Valle Simões pela sua orientação e apoio 
 
 ## Alunos
 - Matheus Paiva Angarola - **12560982** ([Github](https://github.com/MatheusPaivaa))
-- João Pedro Viguini T.T. -  **14675503** ([Github](https://github.com/jpviguini))
+- João Pedro Viguini T.T. Correa -  **14675503** ([Github](https://github.com/jpviguini))
 - Julia Cavallio Orlando - **14758721** ([Github](https://github.com/))
 - Leonardo Marangoni - **14747614** ([Github](https://github.com/))
 - Antonio Carlos de Almeida Micheli Neto - **14559013** ([Github](https://github.com/))
