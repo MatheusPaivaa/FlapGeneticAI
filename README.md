@@ -1,5 +1,5 @@
 <h1 align="center">Algoritmos Evolutivos Aplicados ao Jogo Flappy Bird 🦅💻</h1>
-<p align="center"> Projeto de pesquisa da disciplina SSC0571 - Evolução Histórica da Computação e Aplicações, com duração de 2024. </p>
+<p align="center"> Projeto de pesquisa da disciplina SSC0713- Sistemas Evolutivos Aplicados à Robótica, com duração de 2024. </p>
 
 <p align="center">
   <a href="#estrutura-do-projeto">Estrutura do Projeto</a> • 
