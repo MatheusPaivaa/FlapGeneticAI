@@ -42,6 +42,18 @@ Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para ma
 Gostaríamos de agradecer a Eduardo Valle Simões pela sua orientação e apoio ao longo deste projeto.
 
 ## <div id="bibliography"></div>Bibliografia
+- **Evolutionary Computation: A Unified Approach**, Kenneth A. De Jong, MIT Press, Cambridge, 2006.
+- **Experimental Research in Evolutionary Computation: The New Experimentalism**, Thomas Bartz-Beielstein, Springer-Verlag, London, 2006.
+- **Introduction to Stochastic Search and Optimization: Estimation, Simulation, and Control**, James C. Spall, John Wiley & Sons, 2003.
+- **The Design of Innovation: Lessons from and for Competent Genetic Algorithms**, David E. Goldberg, Kluwer Academic Publisher, Boston, 2002.
+- **Multiobjective Optimization using Evolutionary Algorithms**, Kalyanmoy Deb, John Wiley & Sons, Chichester, UK, 2001.
+- **Evolutionary Computation 1: Basic Algorithms and Operators**, T. Bäck, D. B. Fogel, Z. Michalewicz, Taylor & Francis Group, New York, 2000.
+- **Evolutionary Computation 2: Advanced Algorithms and Operators**, T. Bäck, D. B. Fogel, Z. Michalewicz, Taylor & Francis Group, Institute of Physics Publishing, Bristol, UK, 2000.
+- **Metaheuristics: Progress as Real Problem Solvers**, Toshihide Ibaraki, Koji Nonobe, Mutsunori Yagiura, Springer, 2005.
+- **How to Solve It: Modern Heuristics**, Zbigniew Michalewicz, David B. Fogel, Springer-Verlag, Berlin, 2ª Edição, 2004.
+- **Computational Principles of Mobile Robotics**, Gregory Dudek, Michael Jenkin, Cambridge Press, 2000.
+- **GitLab - SSC0713: Sistemas Evolutivos Aplicados à Robótica**, disponível em: [https://gitlab.com/simoesusp/disciplinas/-/tree/master/SSC0713-Sistemas-Evolutivos-Aplicados-a-Robotica?ref_type=heads](https://gitlab.com/simoesusp/disciplinas/-/tree/master/SSC0713-Sistemas-Evolutivos-Aplicados-a-Robotica?ref_type=heads).
+
 
 ## Alunos
 - Matheus Paiva Angarola - **12560982** ([Github](https://github.com/MatheusPaivaa))
