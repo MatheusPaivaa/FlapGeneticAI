@@ -14,6 +14,11 @@
 </p>
 
 <p align="center">
+   <img align="center" text-align="center" width="30%" style="margin-right:50px;" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/img1.png">
+   <img align="center" text-align="center" width="30%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/img2.png">
+</p>
+
+<p align="center">
 Este projeto explora a aplicação de algoritmos evolutivos para treinar um agente a jogar Flappy Bird. Através da utilização de técnicas de seleção natural e mutação, o modelo é evoluído para melhorar sua performance no jogo, simulando um processo de adaptação gradual. O objetivo é observar como a evolução pode ser usada para resolver problemas de controle em ambientes dinâmicos e não determinísticos.
 </p>
 
@@ -71,10 +76,10 @@ A nova geração substitui a antiga total ou parcialmente.
 ## <div id="video"></div>Vídeo de apresentação
 [link para o video]
 
-## <div id="contributing"></div>Contribuição
+## <div id="contribuindo"></div>Contribuição
 Contribuições são bem-vindas! Por favor, faça um fork do repositório e envie um pull request com suas alterações.
 
-## <div id="license"></div>Licença
+## <div id="licenca"></div>Licença
 Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
 ## <div id="acknowledgements"></div>Agradecimentos
