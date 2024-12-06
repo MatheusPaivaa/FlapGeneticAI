@@ -23,12 +23,70 @@ Este projeto explora a aplicação de algoritmos evolutivos para treinar um agen
 </p>
 
 ## <div id="estrutura-do-projeto"></div>Estrutura do Projeto
-...
+Abaixo está a estrutura de diretórios e arquivos do projeto. Cada componente foi organizado para facilitar o desenvolvimento e a manutenção das versões em Python e C++.
+
 
 ## <div id="instalacao"></div>Instalação
+Esta aplicação oferece versões em Python e C++. Siga os passos abaixo para configurar o ambiente e rodar a versão de sua escolha.
+
+___
+
+### flapgeneticai_python
+### Pré-requisitos
+
+- Python 3.7 ou superior
+- PIP
+- Git
+
+### Passos
+
+1. **Clone o repositório**:
+
+   ```bash
+   git clone https://github.com/MatheusPaivaa/FlapGeneticAI.git
+   cd FlapGeneticAI
+   ```
+
+2. **Crie e ative o ambiente virtual**:
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # No Windows: venv\Scripts\activate
+   ```
+
+3. **Instale as dependências**:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Execute o código**:
+
+   ```bash
+   python main.py
+   ```
+
+### Usando o Makefile (Opcional)
+
+- **Instalar dependências**:
+
+  ```bash
+  make install-deps
+  ```
+
+- **Rodar o código**:
+
+  ```bash
+  make run
+   ```
+___
+
+### flapgeneticai_cpp
 ...
 
 ## <div id="uso"></div>Uso
+Após a instalação, você pode começar a utilizar o projeto executando o código conforme as instruções fornecidas. Abaixo estão os detalhes sobre como interagir com a aplicação e suas funcionalidades principais.
+
 ...
 
 ## <div id="algoritmos-e-modelos"></div>Algoritmos e Modelos
@@ -67,8 +125,6 @@ A nova geração substitui a antiga total ou parcialmente.
 - **Elitismo:** Os indivíduos mais aptos da geração anterior são preservados na nova geração.
 - **Substituição completa:** Todos os indivíduos antigos são descartados e substituídos pelos novos.
 - **Substituição parcial:** Apenas parte da nova geração é inserida, mantendo indivíduos da geração anterior.
-
-
 
 ## <div id="resultados"></div>Resultados
 ...
