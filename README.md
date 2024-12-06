@@ -1,4 +1,4 @@
-<h1 align="center">Algoritmos Evolutivos Aplicados ao Jogo Flappy Bird 🦅💻</h1>
+<h1 align="center">Algoritmos Evolutivos Aplicados inspirados no Jogo Flappy Bird 🚀💻</h1>
 <p align="center"> Projeto de pesquisa da disciplina SSC0713- Sistemas Evolutivos Aplicados à Robótica, com duração de 2024. </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-Este projeto explora a aplicação de algoritmos evolutivos para treinar um agente a jogar Flappy Bird. Através da utilização de técnicas de seleção natural e mutação, o modelo é evoluído para melhorar sua performance no jogo, simulando um processo de adaptação gradual. O objetivo é observar como a evolução pode ser usada para resolver problemas de controle em ambientes dinâmicos e não determinísticos.
+Este projeto explora a aplicação de algoritmos evolutivos para treinar um agente a jogar um jogo inspirado Flappy Bird. Através da utilização de técnicas de seleção natural e mutação, o modelo é evoluído para melhorar sua performance no jogo, simulando um processo de adaptação gradual. O objetivo é observar como a evolução pode ser usada para resolver problemas de controle em ambientes dinâmicos e não determinísticos.
 </p>
 
 ## <div id="estrutura-do-projeto"></div>Estrutura do Projeto
