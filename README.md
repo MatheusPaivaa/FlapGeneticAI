@@ -188,8 +188,9 @@ Gostaríamos de agradecer a Eduardo Valle Simões pela sua orientação e apoio 
 
 
 ## Alunos
-- Matheus Paiva Angarola - **12560982** ([Github](https://github.com/MatheusPaivaa))
+- Antonio Carlos de Almeida Micheli Neto - **14559013** ([Github](https://github.com/))
 - João Pedro Viguini T.T. Correa -  **14675503** ([Github](https://github.com/jpviguini))
 - Julia Cavallio Orlando - **14758721** ([Github](https://github.com/))
 - Leonardo Marangoni - **14747614** ([Github](https://github.com/))
-- Antonio Carlos de Almeida Micheli Neto - **14559013** ([Github](https://github.com/))
+- Matheus Paiva Angarola - **12560982** ([Github](https://github.com/MatheusPaivaa))
+
