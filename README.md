@@ -249,7 +249,31 @@ Essas entradas fornecem informações suficientes para a rede neural decidir qua
 
 
 ## <div id="resultados"></div>Resultados
-...
+
+<p align="center">
+   <img align="center" text-align="center" width="50%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/resultados.png">
+</p>
+
+1. **Max Fitness**:
+   - O **Max Fitness** cresce de forma acentuada nas primeiras gerações, com um aumento considerável entre a Geração 1 (248) e a Geração 10 (3174).
+   - No entanto, após a Geração 10, o crescimento do Max Fitness começa a diminuir, com flutuações nas gerações seguintes (exemplo: Geração 14 e 15 têm o mesmo valor de 5553, e a Geração 30 atinge 5748).
+   - Essa tendência de crescimento mais lento nas últimas gerações sugere que, à medida que o modelo evolui e alcança melhores soluções, a busca por novos máximos se torna mais desafiadora, o que é esperado, dado que os algoritmos evolutivos podem enfrentar dificuldades em melhorar ainda mais após um certo ponto.
+
+2. **Média**:
+   - A média mostra uma tendência de aumento ao longo das gerações, mas com variações. Inicialmente, a média é baixa (Geração 1: 51.453), mas depois se estabiliza e flutua entre 1000 a 1800.
+   - A Geração 25 apresenta o maior valor médio (1835.63), o que indica uma melhoria na qualidade geral das soluções ao longo das gerações.
+   - Essa tendência também reflete que, enquanto os indivíduos na população estão se tornando mais aptos, a variação de fitness entre eles se reduz. 
+
+### Conclusão:
+
+O comportamento observado pode ser explicado por alguns fatores típicos de algoritmos evolutivos:
+
+- **Dificuldade crescente**: à medida que o algoritmo avança, ele encontra soluções melhores, mas a busca por novas soluções ótimas se torna progressivamente mais difícil. Isso é refletido na desaceleração do crescimento do Max Fitness nas últimas gerações.
+  
+- **Exploração e Exploração**: O algoritmo começa explorando amplamente o espaço de soluções e, conforme avança, explora mais detalhadamente as melhores soluções encontradas, o que pode resultar em um crescimento mais gradual da fitness máxima, enquanto a média continua a melhorar.
+
+- **Desafio de Atingir o Ótimo Global**: Como o problema se torna mais complexo com o passar das gerações, o algoritmo pode começar a se "prender" em ótimos locais ou sub-ótimos, dificultando ainda mais a melhoria contínua da fitness máxima.
+
 
 ## <div id="video"></div>Vídeo de apresentação
 [link para o video]
