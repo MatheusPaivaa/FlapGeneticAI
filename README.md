@@ -14,16 +14,111 @@
 </p>
 
 <p align="center">
+   <img align="center" text-align="center" width="30%" style="margin-right:50px;" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/img1.png">
+   <img align="center" text-align="center" width="30%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/img2.png">
+</p>
+
+<p align="center">
 Este projeto explora a aplicação de algoritmos evolutivos para treinar um agente a jogar Flappy Bird. Através da utilização de técnicas de seleção natural e mutação, o modelo é evoluído para melhorar sua performance no jogo, simulando um processo de adaptação gradual. O objetivo é observar como a evolução pode ser usada para resolver problemas de controle em ambientes dinâmicos e não determinísticos.
 </p>
 
 ## <div id="estrutura-do-projeto"></div>Estrutura do Projeto
+Abaixo está a estrutura de diretórios e arquivos do projeto. Cada componente foi organizado para facilitar o desenvolvimento e a manutenção das versões em Python e C++.
+
 ...
 
 ## <div id="instalacao"></div>Instalação
-...
+Esta aplicação oferece versões em Python e C++. Siga os passos abaixo para configurar o ambiente e rodar a versão de sua escolha.
 
+___
+
+### flapgeneticai_python
+### Pré-requisitos
+
+- Python 3.7 ou superior
+- PIP
+- Git
+
+### Passos
+
+1. **Clone o repositório**:
+
+   ```bash
+   git clone https://github.com/MatheusPaivaa/FlapGeneticAI.git
+   cd FlapGeneticAI
+   ```
+
+2. **Crie e ative o ambiente virtual**:
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # No Windows: venv\Scripts\activate
+   ```
+
+3. **Instale as dependências**:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Execute o código**:
+
+   ```bash
+   python main.py
+   ```
+
+### Usando o Makefile (Opcional)
+
+- **Instalar dependências**:
+
+  ```bash
+  make install-deps
+  ```
+
+- **Rodar o código**:
+
+  ```bash
+  make run
+   ```
+___
+
+### flapgeneticai_cpp
+
+Para rodar este projeto, é necessário ter o **Raylib** instalado no seu sistema, além de um compilador C++ com suporte a bibliotecas externas.
+
+1. **Instalar o Raylib**
+
+   Antes de compilar o código, você precisa instalar a biblioteca **Raylib**. Você pode seguir as instruções de instalação do Raylib para o seu sistema operacional na documentação oficial [aqui](https://terminalroot.com.br/2022/11/crie-jogos-para-windows-linux-e-web-com-raylib-c-cpp.html#google_vignette).
+
+2. **Instalar dependências**
+
+   No seu sistema, você pode precisar de algumas dependências adicionais. Para instalar as bibliotecas necessárias em um sistema baseado em **Linux**, use o seguinte comando:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install libx11-dev libgl1-mesa-dev libasound2-dev libpthread-stubs0-dev libudev-dev libpng-dev
+   ```
+
+3. **Compilar o projeto**
+
+   Após a instalação do Raylib e das dependências necessárias, você pode compilar o projeto com o seguinte comando:
+
+   ```bash
+   make
+   ```
+
+4. **Executar o jogo**
+
+   Após a compilação, você pode executar o jogo com o comando:
+
+   ```bash
+   make run
+   ```
+
+   
 ## <div id="uso"></div>Uso
+Após a instalação, você pode começar a utilizar o projeto executando o código conforme as instruções fornecidas. Abaixo estão os detalhes sobre como interagir com a aplicação e suas funcionalidades principais.
+
 ...
 
 ## <div id="algoritmos-e-modelos"></div>Algoritmos e Modelos
@@ -63,18 +158,16 @@ A nova geração substitui a antiga total ou parcialmente.
 - **Substituição completa:** Todos os indivíduos antigos são descartados e substituídos pelos novos.
 - **Substituição parcial:** Apenas parte da nova geração é inserida, mantendo indivíduos da geração anterior.
 
-
-
 ## <div id="resultados"></div>Resultados
 ...
 
 ## <div id="video"></div>Vídeo de apresentação
 [link para o video]
 
-## <div id="contributing"></div>Contribuição
+## <div id="contribuindo"></div>Contribuição
 Contribuições são bem-vindas! Por favor, faça um fork do repositório e envie um pull request com suas alterações.
 
-## <div id="license"></div>Licença
+## <div id="licenca"></div>Licença
 Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
 ## <div id="acknowledgements"></div>Agradecimentos
