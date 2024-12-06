@@ -151,7 +151,11 @@ O projeto não requer nenhuma interação com o usuário durante a execução. A
    <img align="center" text-align="center" width="15%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/score.png">
 </p>
 
+Além disso, é disponibilzado no terminal a evolução do treinamento ao longo das gerações, sendo apresentados o **Fitness Máximo** e o **Fitness Médio**:
 
+<p align="center">
+   <img align="center" text-align="center" width="40%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/terminal.png">
+</p>
 
 ## <div id="pontos_importantes"></div>Pontos importantes
 
