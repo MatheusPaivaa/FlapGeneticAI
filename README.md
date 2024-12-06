@@ -148,6 +148,9 @@ O projeto não requer nenhuma interação com o usuário durante a execução. A
 
 - **Alive:** É o número de indivíduos vivos até o momento.
 
+<p align="center">
+   <img align="center" text-align="center" width="15%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/score.png">
+</p>
 
 
 ## <div id="algoritmos-e-modelos"></div>Algoritmos e Modelos
