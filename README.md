@@ -1,11 +1,12 @@
 <h1 align="center">Algoritmos Evolutivos Aplicados inspirados no Jogo Flappy Bird 🚀💻</h1>
-<p align="center"> Projeto de pesquisa da disciplina SSC0713- Sistemas Evolutivos Aplicados à Robótica, com duração de 2024. </p>
+<p align="center"> Projeto de pesquisa da disciplina SSC0713- Sistemas Evolutivos Aplicados à Robótica. </p>
 
 <p align="center">
   <a href="#estrutura-do-projeto">Estrutura do Projeto</a> • 
   <a href="#instalacao">Instalação</a> • 
   <a href="#uso">Uso</a> • 
   <a href="#algoritmos-e-modelos">Algoritmos e Modelos</a> •
+  <a href="#pontos_importantes">Pontos importantes</a> •
   <a href="#resultados">Resultados</a> •
   <a href="#contribuindo">Contribuição</a> •
   <a href="#licenca">Licença</a> •
@@ -45,45 +46,7 @@ ___
 
 2. **`imgs/`**: Contém as imagens usadas no jogo, como a do foguete (`foguete.png`) e o fundo do jogo (`fundo.jpeg`).
 
-O **Makefile** é uma ferramenta usada para automatizar tarefas como compilação e execução de programas, seja em C++ ou Python. Ele define regras específicas para essas tarefas, simplificando o processo de desenvolvimento.
 
-3. **Funções principais do Makefile (C++ e Python):**
-
-  - **`make all`**:  
-     - **C++**: Compila o código-fonte e gera o executável.
-     - **Python**: Não existe diretamente, mas pode-se definir regras para rodar o código, como `run`.
-  
-  - **`make run`**:
-     - **C++**: Executa o programa compilado.
-     - **Python**: Roda o script Python, utilizando o ambiente virtual configurado.
-  
-  - **`make clean`**:  
-     - **C++**: Remove arquivos temporários (como objetos e binários) para limpar o projeto.
-     - **Python**: Exclui o ambiente virtual criado para o projeto.
-  
-  - **`make install-deps`**:
-     - **C++**: Não aplicável diretamente.
-     - **Python**: Cria o ambiente virtual e instala as dependências listadas no `requirements.txt`.
-
-4. **Estrutura da rede usada:**
-O código utiliza uma **rede neural feedforward com duas camadas ocultas** para o controle dos foguetes. A arquitetura consiste em:
-
-      a. **Camada de entrada (input layer)**: 5 neurônios que representam os seguintes atributos:
-         - Altura normalizada do pássaro (`ny`).
-         - Velocidade normalizada do pássaro (`nvel`).
-         - Distância horizontal normalizada ao obstáculo (`nxDist`).
-         - Altura superior do obstáculo normalizada (`ntop`).
-         - Altura inferior do obstáculo normalizada (`nbottom`).
-      
-      b. **Primeira camada oculta**: 10 neurônios com função de ativação ReLU.
-      
-      c. **Segunda camada oculta**: 8 neurônios com função de ativação ReLU.
-      
-      d. **Camada de saída**: 1 neurônio com função de ativação sigmoid, que retorna a probabilidade do pássaro realizar o pulo.
-
-<p align="center">
-   <img align="center" text-align="center" width="70%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/sist_evol.png">
-</p>
 
 ## <div id="instalacao"></div>Instalação
 Esta aplicação oferece versões em Python e C++. Siga os passos abaixo para configurar o ambiente e rodar a versão de sua escolha.
@@ -177,7 +140,15 @@ Para rodar este projeto, é necessário ter o **Raylib** instalado no seu sistem
 ## <div id="uso"></div>Uso
 Após a instalação, você pode começar a utilizar o projeto executando o código conforme as instruções fornecidas. Abaixo estão os detalhes sobre como interagir com a aplicação e suas funcionalidades principais.
 
-...
+O projeto não requer nenhuma interação com o usuário durante a execução. Ao invés disso, iremos detalhar cada componente presente no jogo:
+
+- **Score:** Representa a pontuação no jogo. Ela é atualizada cada vez que pelo menos um indivíduo passa pelos canos com sucesso. Essa pontuação é zerada a cada nova geração para que seja possível comparar seu desempenho com relação às anteriores.
+
+- **Generation:** É o número de gerações até o momento. Quando todos os indivíduos morrem, esse valor é atualizado e uma nova geração é criada com 1000 indivíduos novamente.
+
+- **Alive:** É o número de indivíduos vivos até o momento.
+
+
 
 ## <div id="algoritmos-e-modelos"></div>Algoritmos e Modelos
 
@@ -215,6 +186,67 @@ A nova geração substitui a antiga total ou parcialmente.
 - **Elitismo:** Os indivíduos mais aptos da geração anterior são preservados na nova geração.
 - **Substituição completa:** Todos os indivíduos antigos são descartados e substituídos pelos novos.
 - **Substituição parcial:** Apenas parte da nova geração é inserida, mantendo indivíduos da geração anterior.
+
+
+
+## <div id="pontos_importantes"></div>Pontos importantes
+
+### 1. Seleção dos Pais (Usando 70% da população)
+- **Por que 70% e não 100%?**
+  - Evita convergência prematura ao dar chance para indivíduos menos aptos contribuírem para a reprodução.
+  - Preserva a diversidade genética, importante para evitar mínimos locais.
+  - Foco nos melhores indivíduos, mas com margem para testar novas combinações (exploração).
+  - Reduz o custo computacional, especialmente em populações grandes como a inicial de 1000 pássaros.
+
+---
+
+### 2. Entradas para a Rede Neural
+A rede neural utiliza **5 entradas** que fornecem informações do ambiente ao pássaro:
+  - Altura normalizada do pássaro (`ny`).
+  - Velocidade normalizada do pássaro (`nvel`).
+  - Distância horizontal normalizada ao obstáculo (`nxDist`).
+  - Altura superior do obstáculo normalizada (`ntop`).
+  - Altura inferior do obstáculo normalizada (`nbottom`).
+
+Essas entradas fornecem informações suficientes para a rede neural decidir quando o pássaro deve pular, considerando a posição e o movimento relativo ao próximo obstáculo.
+
+
+<p align="center">
+   <img align="center" text-align="center" width="70%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/sist_evol.png">
+</p>
+
+---
+
+### 3. Arquitetura da Rede Neural (rede neural feedforward com duas camadas ocultas):
+- **Entrada (Input Layer):** 
+  - Tamanho: 5 neurônios (correspondentes às 5 entradas mencionadas acima).
+- **Camada Oculta 1:** 
+  - 10 neurônios com ativação **ReLU**.
+- **Camada Oculta 2:** 
+  - 8 neurônios com ativação **ReLU**.
+- **Saída (Output Layer):**
+  - 1 neurônio com ativação **sigmoide**.
+  - Resultado: probabilidade de o pássaro pular (threshold: 0.5).
+
+---
+
+### 4. Cruzamento e Mutação
+- **Cruzamento:** 
+  - **Crossover uniforme:** Cada peso do cérebro do filho é selecionado aleatoriamente entre os pesos dos dois pais com probabilidade de 50%.
+- **Mutação:** 
+  - Mutação aplicada aos pesos com uma taxa inicial de **5%**.
+  - Se a evolução estagnar (baixa variação no fitness médio), a taxa de mutação aumenta para até **70%** para explorar novas soluções.
+
+---
+
+### 5. Mecânicas Evolutivas
+- **Sobrevivência dos melhores (elitismo):**
+  - O **topo da população** (os mais aptos) é preservado diretamente para a próxima geração, garantindo continuidade genética.
+- **Ajustes de dificuldade:**
+  - A velocidade dos canos aumenta conforme o score aumenta (a cada múltiplo de 10), simulando maior dificuldade.
+
+---
+
 
 ## <div id="resultados"></div>Resultados
 ...
