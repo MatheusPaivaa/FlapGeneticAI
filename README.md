@@ -5,7 +5,6 @@
   <a href="#estrutura-do-projeto">Estrutura do Projeto</a> • 
   <a href="#instalacao">Instalação</a> • 
   <a href="#uso">Uso</a> • 
-  <a href="#algoritmos-e-modelos">Algoritmos e Modelos</a> •
   <a href="#pontos_importantes">Pontos importantes</a> •
   <a href="#resultados">Resultados</a> •
   <a href="#contribuindo">Contribuição</a> •
@@ -151,44 +150,6 @@ O projeto não requer nenhuma interação com o usuário durante a execução. A
 <p align="center">
    <img align="center" text-align="center" width="15%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/score.png">
 </p>
-
-
-## <div id="algoritmos-e-modelos"></div>Algoritmos e Modelos
-
-O algoritmo que utilizamos neste projeto é inspirado no processo de seleção natural, em que soluções candidatas (indivíduos) são evoluídas ao longo de várias gerações para resolver problemas complexos. Ele simula o comportamento de populações biológicas, aplicando processos como seleção, crossover(recombinação), mutação e substituição, com o objetivo de melhorar a qualidade das soluções e tentando sempre manter a diversidade genética.
-
-### 1. Inicialização da população
-
-- Uma população inicial é criada, onde cada indivíduo representa uma solução possível para o problema.
-- Os indivíduos são representados geralmente como vetores (ou cromossomos), contendo variáveis que definem as soluções.
-- Inicialmente, esses valores podem ser gerados aleatoriamente ou com base em heurísticas específicas para aumentar a qualidade inicial da população.
-
-### 2. Avaliação (Cálculo do fitness)
-- Cada indivíduo é avaliado por meio de uma função de aptidão (fitness), que atribui um valor numérico indicando a qualidade da solução que ele representa.
-- Essa avaliação é específica ao problema e pode considerar múltiplos critérios, como custo, desempenho ou precisão – isso depende do problema que estamos resolvendo.
-- O resultado determina a probabilidade do indivíduo ser selecionado para a próxima etapa.
-
-### 3. Seleção
-Indivíduos com maior aptidão têm maior chance de serem selecionados como "pais" para gerar a próxima geração.
-
-- **Elitismo:** O elitismo é uma estratégia de seleção onde os melhores indivíduos de uma geração são mantidos na próxima geração sem qualquer modificação. A ideia é garantir que as melhores soluções encontradas até o momento não sejam perdidas durante o processo evolutivo. 
-- **Torneio de 2:** O torneio de 2 é um método simples de seleção, onde dois indivíduos são escolhidos aleatoriamente da população e competem entre si. O vencedor do torneio, o indivíduo com maior fitness, é selecionado como um dos pais para gerar a próxima geração. 
-- **Roleta:** A probabilidade de um indivíduo ser selecionado é proporcional ao seu fitness. Isso significa que indivíduos mais aptos têm uma chance maior de serem escolhidos, mas todos têm alguma chance de ser selecionados, mesmo que tenham uma aptidão mais baixa.
-
-
-### 4. Crossover
-- Dois ou mais indivíduos selecionados como pais combinam suas características para gerar novos indivíduos (filhos). O objetivo é explorar novas combinações de soluções com base nas melhores características dos pais.
-
-### 5. Mutação
-- Pequenas alterações aleatórias são aplicadas aos indivíduos gerados após o crossover. O objetivo é introduzir diversidade na população, ajudando a evitar que o algoritmo fique preso em ótimos locais.
-
-
-### 6. Rearranjo da população (substituição)
-A nova geração substitui a antiga total ou parcialmente.
-
-- **Elitismo:** Os indivíduos mais aptos da geração anterior são preservados na nova geração.
-- **Substituição completa:** Todos os indivíduos antigos são descartados e substituídos pelos novos.
-- **Substituição parcial:** Apenas parte da nova geração é inserida, mantendo indivíduos da geração anterior.
 
 
 
