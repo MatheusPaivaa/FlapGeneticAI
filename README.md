@@ -49,21 +49,41 @@ O **Makefile** é uma ferramenta usada para automatizar tarefas como compilaçã
 
 3. **Funções principais do Makefile (C++ e Python):**
 
-1. **`make all`**:  
-   - **C++**: Compila o código-fonte e gera o executável.
-   - **Python**: Não existe diretamente, mas pode-se definir regras para rodar o código, como `run`.
+  - **`make all`**:  
+     - **C++**: Compila o código-fonte e gera o executável.
+     - **Python**: Não existe diretamente, mas pode-se definir regras para rodar o código, como `run`.
+  
+  - **`make run`**:
+     - **C++**: Executa o programa compilado.
+     - **Python**: Roda o script Python, utilizando o ambiente virtual configurado.
+  
+  - **`make clean`**:  
+     - **C++**: Remove arquivos temporários (como objetos e binários) para limpar o projeto.
+     - **Python**: Exclui o ambiente virtual criado para o projeto.
+  
+  - **`make install-deps`**:
+     - **C++**: Não aplicável diretamente.
+     - **Python**: Cria o ambiente virtual e instala as dependências listadas no `requirements.txt`.
 
-2. **`make run`**:
-   - **C++**: Executa o programa compilado.
-   - **Python**: Roda o script Python, utilizando o ambiente virtual configurado.
+4. **Estrutura da rede usada:**
+O código utiliza uma **rede neural feedforward com duas camadas ocultas** para o controle dos foguetes. A arquitetura consiste em:
 
-3. **`make clean`**:  
-   - **C++**: Remove arquivos temporários (como objetos e binários) para limpar o projeto.
-   - **Python**: Exclui o ambiente virtual criado para o projeto.
+      a. **Camada de entrada (input layer)**: 5 neurônios que representam os seguintes atributos:
+         - Altura normalizada do pássaro (`ny`).
+         - Velocidade normalizada do pássaro (`nvel`).
+         - Distância horizontal normalizada ao obstáculo (`nxDist`).
+         - Altura superior do obstáculo normalizada (`ntop`).
+         - Altura inferior do obstáculo normalizada (`nbottom`).
+      
+      b. **Primeira camada oculta**: 10 neurônios com função de ativação ReLU.
+      
+      c. **Segunda camada oculta**: 8 neurônios com função de ativação ReLU.
+      
+      d. **Camada de saída**: 1 neurônio com função de ativação sigmoid, que retorna a probabilidade do pássaro realizar o pulo.
 
-4. **`make install-deps`**:
-   - **C++**: Não aplicável diretamente.
-   - **Python**: Cria o ambiente virtual e instala as dependências listadas no `requirements.txt`.
+<p align="center">
+   <img align="center" text-align="center" width="70%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/sist_evol.png">
+</p>
 
 ## <div id="instalacao"></div>Instalação
 Esta aplicação oferece versões em Python e C++. Siga os passos abaixo para configurar o ambiente e rodar a versão de sua escolha.
