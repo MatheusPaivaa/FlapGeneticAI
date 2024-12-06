@@ -16,6 +16,9 @@ const float BIRD_JUMP = -6.0f;
 const int POPULATION_SIZE = 1000;
 const int MAX_GENERATIONS = 1000;
 
+// -------------------- Análise do algoritimo -------------------- //
+std::vector<double> fitnessHistory;
+
 // -------------------- Estrutura da Rede Neural -------------------- //
 struct NeuralNetwork {
     static const int INPUT_SIZE = 5;
