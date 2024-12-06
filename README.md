@@ -25,7 +25,45 @@ Este projeto explora a aplicação de algoritmos evolutivos para treinar um agen
 ## <div id="estrutura-do-projeto"></div>Estrutura do Projeto
 Abaixo está a estrutura de diretórios e arquivos do projeto. Cada componente foi organizado para facilitar o desenvolvimento e a manutenção das versões em Python e C++.
 
-...
+___
+
+### flapgeneticai_python e flapgeneticai_cpp
+1. **`main.py`** e **main.cpp**: Contém todo o código, incluindo a inicialização do Pygame, a definição do comportamento do pássaro e canos, e a implementação da rede neural e do algoritmo genético.
+   
+   - **NeuralNetwork**: Define a rede neural usada pelo pássaro para tomar decisões, como pular ou não. Ela tem camadas de entrada, ocultas e de saída, e usa funções de ativação como ReLU e sigmoid.
+   
+   - **Bird**: Controla o pássaro, definindo sua posição, velocidade e lógica de movimento (incluindo a interação com a rede neural para decidir quando pular).
+   
+   - **Pipe**: Representa os canos que o pássaro deve evitar. Eles se movem horizontalmente e alteram a altura vertical para aumentar a dificuldade.
+   
+   - **Funções de Algoritmo Genético**:
+     - **Crossover**: Combina as redes neurais de dois pássaros para criar um novo pássaro.
+     - **Mutate**: Aplica pequenas mudanças nas redes neurais para introduzir diversidade.
+     - **Evolve**: Cria uma nova geração de pássaros, selecionando os melhores, cruzando e mutando.
+   
+   - **Função principal**: Controla o loop do jogo, gerencia a população de pássaros e executa o algoritmo genético a cada nova geração.
+
+2. **`imgs/`**: Contém as imagens usadas no jogo, como a do foguete (`foguete.png`) e o fundo do jogo (`fundo.jpeg`).
+
+O **Makefile** é uma ferramenta usada para automatizar tarefas como compilação e execução de programas, seja em C++ ou Python. Ele define regras específicas para essas tarefas, simplificando o processo de desenvolvimento.
+
+3. **Funções principais do Makefile (C++ e Python):**
+
+1. **`make all`**:  
+   - **C++**: Compila o código-fonte e gera o executável.
+   - **Python**: Não existe diretamente, mas pode-se definir regras para rodar o código, como `run`.
+
+2. **`make run`**:
+   - **C++**: Executa o programa compilado.
+   - **Python**: Roda o script Python, utilizando o ambiente virtual configurado.
+
+3. **`make clean`**:  
+   - **C++**: Remove arquivos temporários (como objetos e binários) para limpar o projeto.
+   - **Python**: Exclui o ambiente virtual criado para o projeto.
+
+4. **`make install-deps`**:
+   - **C++**: Não aplicável diretamente.
+   - **Python**: Cria o ambiente virtual e instala as dependências listadas no `requirements.txt`.
 
 ## <div id="instalacao"></div>Instalação
 Esta aplicação oferece versões em Python e C++. Siga os passos abaixo para configurar o ambiente e rodar a versão de sua escolha.
