@@ -25,6 +25,7 @@ Este projeto explora a aplicação de algoritmos evolutivos para treinar um agen
 ## <div id="estrutura-do-projeto"></div>Estrutura do Projeto
 Abaixo está a estrutura de diretórios e arquivos do projeto. Cada componente foi organizado para facilitar o desenvolvimento e a manutenção das versões em Python e C++.
 
+...
 
 ## <div id="instalacao"></div>Instalação
 Esta aplicação oferece versões em Python e C++. Siga os passos abaixo para configurar o ambiente e rodar a versão de sua escolha.
@@ -82,8 +83,39 @@ ___
 ___
 
 ### flapgeneticai_cpp
-...
 
+Para rodar este projeto, é necessário ter o **Raylib** instalado no seu sistema, além de um compilador C++ com suporte a bibliotecas externas.
+
+1. **Instalar o Raylib**
+
+   Antes de compilar o código, você precisa instalar a biblioteca **Raylib**. Você pode seguir as instruções de instalação do Raylib para o seu sistema operacional na documentação oficial [aqui](https://terminalroot.com.br/2022/11/crie-jogos-para-windows-linux-e-web-com-raylib-c-cpp.html#google_vignette).
+
+2. **Instalar dependências**
+
+   No seu sistema, você pode precisar de algumas dependências adicionais. Para instalar as bibliotecas necessárias em um sistema baseado em **Linux**, use o seguinte comando:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install libx11-dev libgl1-mesa-dev libasound2-dev libpthread-stubs0-dev libudev-dev libpng-dev
+   ```
+
+3. **Compilar o projeto**
+
+   Após a instalação do Raylib e das dependências necessárias, você pode compilar o projeto com o seguinte comando:
+
+   ```bash
+   make
+   ```
+
+4. **Executar o jogo**
+
+   Após a compilação, você pode executar o jogo com o comando:
+
+   ```bash
+   make run
+   ```
+
+   
 ## <div id="uso"></div>Uso
 Após a instalação, você pode começar a utilizar o projeto executando o código conforme as instruções fornecidas. Abaixo estão os detalhes sobre como interagir com a aplicação e suas funcionalidades principais.
 
