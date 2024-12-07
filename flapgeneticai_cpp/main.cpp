@@ -1,3 +1,6 @@
+
+#define RL_LOG_LEVEL RL_LOG_NONE
+
 #include "raylib.h"
 #include <iostream>
 #include <vector>
@@ -5,13 +8,17 @@
 #include <random>
 #include <cmath>
 #include <ctime>
+#include <fstream>
+
 
 // -------------------- Configurações do jogo -------------------- //
 const int SCREEN_WIDTH = 500;
 const int SCREEN_HEIGHT = 750;
 const int GAP = 150;
 const int OBSTACLE_WIDTH = 70;
-const float GRAVITY = 0.4f;
+const float GRAVITY_INITIAL = 0.4f; // Gravidade inicial
+const float GRAVITY_INCREASE = 0.01f; // Taxa de aumento da gravidade
+float GRAVITY = GRAVITY_INITIAL; // Gravidade variável
 const float BIRD_JUMP = -6.0f;
 const int POPULATION_SIZE = 1000;
 const int MAX_GENERATIONS = 1000;
@@ -289,18 +296,102 @@ bool DetectCollision(float obstacleX, int obstacleHeight, float birdX, float bir
     return false;
 }
 
+void saveBestBird(const Bird &bestBird) {
+    std::ofstream outFile("current_best_bird.txt");
+
+    if (outFile.is_open()) {
+        auto weights = bestBird.brain.getWeights();
+        for (const auto &w : weights) {
+            outFile << w << " ";
+        }
+        outFile << "\n";
+        outFile.close();
+    } else {
+        std::cout << "Não foi possível salvar o melhor pássaro.\n";
+    }
+}
+
+Bird loadBestBird() {
+    Bird bestBird;
+
+    std::ifstream inFile("utils/best_bird.txt");
+    if (inFile.is_open()) {
+        std::vector<double> weights;
+        double weight;
+        while (inFile >> weight) {
+            weights.push_back(weight);
+        }
+        bestBird.brain.setWeights(weights);
+        inFile.close();
+    } else {
+        std::cout << "Não foi possível carregar o melhor pássaro.\n";
+    }
+
+    return bestBird;
+}
+
+// Função para alterar a cor do texto no terminal
+void setConsoleColor(int colorCode) {
+    #ifdef _WIN32
+        // No Windows, seria necessário usar funções do Windows API
+    #else
+        std::cout << "\033[" << colorCode << "m";
+    #endif
+}
+
+// Função para exibir uma caixa no terminal
+void printBoxedTitle(const std::string& title) {
+    setConsoleColor(36); // Cor ciano para o título
+    std::string border(title.size() + 4, '=');
+
+    std::cout << "\n" << border << "\n";
+    std::cout << "| " << title << " |\n";
+    std::cout << border << "\n\n";
+    setConsoleColor(0); // Resetar para a cor padrão
+}
+
+
+// Função para limpar o console
+void clearConsole() {
+#ifdef _WIN32
+    system("cls"); // Windows
+#else
+    system("clear"); // Linux
+#endif
+}
+
 int main() {
+
+    Bird bestBird;
+
+    printBoxedTitle("Algoritmos Evolutivos Aplicados no Jogo RocketUp");
+
+    std::cout << "Escolha uma opção:\n\n";
+    std::cout << "[1] - Treinar novamente\n";
+    std::cout << "[2] - Rodar com o melhor foguete\n\n--> ";
+    int option;
+    std::cin >> option;
+
+    if (option == 2) {
+        bestBird = loadBestBird();  // Carregar o melhor pássaro salvo
+        std::cout << "Rodando com o melhor pássaro...\n";
+    } else {
+        std::cout << "Iniciando o treinamento...\n";
+    }
+
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Flappy Bird com Evolucao Genetica");
     SetTargetFPS(60);
 
-    Texture2D birdTex = LoadTexture("imgs/uhu.png");
-    Texture2D background = LoadTexture("imgs/imagem.jpeg");
+    Texture2D birdTex = LoadTexture("imgs/foguete.png");
+    Texture2D background = LoadTexture("imgs/fundo.jpeg");
     Texture2D curtains = LoadTexture("imgs/cortinas.png");
 
     int generation = 1;
     std::vector<Bird> birds(POPULATION_SIZE);
 
     bool running=true;
+
+    clearConsole();
 
     while (running && generation <= MAX_GENERATIONS) {
         // Velocidade inicial a cada geração
@@ -309,13 +400,17 @@ int main() {
 
         Obstacle obstacle(SCREEN_WIDTH);
 
-        for (auto &b: birds) {
-            b.x=50;
-            b.y=300;
-            b.velocity=0;
-            b.score=0;
-            b.alive=true;
-            b.fitness=0;
+        if (option == 2) {
+            birds = {bestBird};  // Rodar com o melhor pássaro
+        }{
+            for (auto &b: birds) {
+                b.x=50;
+                b.y=300;
+                b.velocity=0;
+                b.score=0;
+                b.alive=true;
+                b.fitness=0;
+            }
         }
 
         bool generationRunning=true;
@@ -335,9 +430,17 @@ int main() {
 
             // A velocidade baseia-se no score. A cada 10 pontos, aumentamos a dificuldade
             // Diminuindo o valor da velocidade (mais negativo = mais rápido)
-            if(score>0 && score%10==0 && score_prev + 1 == score) {
-                obstacleSpeed -=1.0f;
+            if(score > 0 && score % 10 == 0 && score_prev + 1 == score) {
+                obstacleSpeed -= 1.0f;
                 score_prev = score;
+
+                // Log para indicar o aumento da velocidade e gravidade
+                
+                setConsoleColor(36); // Cor ciano para o título
+                std::cout << "\nAjustes após atingir o score " << score << ":\n";
+                std::cout << "  Velocidade dos obstáculos aumentada para: " << abs(obstacleSpeed) << "\n";
+                setConsoleColor(0); // Cor ciano para o título
+
                 // Após alterar, uma possibilidade é resetar o score temporário ou algo do tipo
                 // Mas aqui, como o score só incrementa quando o cano sai da tela,
                 // ele não vai ficar preso aumentando várias vezes no mesmo frame.
@@ -399,18 +502,32 @@ int main() {
         for (auto &b: birds) {
             if(b.fitness>max_fitness) max_fitness=b.fitness;
             total_fit+=b.fitness;
+
         }
         double avg_fitness = total_fit/birds.size();
-        std::cout<<"Geracao "<<generation<<" concluida. Max fitness: "<<max_fitness<<" , Media: "<<avg_fitness<<"\n";
+
+
+        double maxFitness = 0;
+        for (auto &b : birds) {
+            if (b.fitness > maxFitness) {
+                maxFitness = b.fitness;
+                bestBird = b; 
+            }
+        }
+
+        std::cout<<"\n✅ Geracao "<<generation<<" concluida. Max fitness: "<<max_fitness<<" , Media: "<<avg_fitness<<"\n";
 
         if(generation>=MAX_GENERATIONS) {
             std::cout<<"Numero maximo de geracoes alcancado.\n";
             break;
         }
 
+        saveBestBird(bestBird);
+
         birds = evolve(birds, generation, avg_fitness);
         generation++;
     }
+
 
     UnloadTexture(birdTex);
     UnloadTexture(background);
