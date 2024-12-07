@@ -261,8 +261,8 @@ def evolve(birds, avg_fitness, generation):
 
     return new_birds
 
-bird_image = pygame.image.load("imgs/uhu.png").convert_alpha()
-background_image = pygame.image.load("imgs/imagem.jpeg").convert()
+bird_image = pygame.image.load("imgs/foguete.png").convert_alpha()
+background_image = pygame.image.load("imgs/fundo.jpeg").convert()
 
 def main():
     global current_pipe_velocity

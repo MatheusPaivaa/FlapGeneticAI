@@ -157,6 +157,12 @@ Além disso, é disponibilzado no terminal a evolução do treinamento ao longo 
    <img align="center" text-align="center" width="40%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/terminal.png">
 </p>
 
+Por fim, a cada 10 pontos conquistados, a velocidade dos obstáculos aumenta e, quando isso ocorre, o terminal exibe uma mensagem informativa:
+
+<p align="center">
+   <img align="center" text-align="center" width="40%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/vel_update.png">
+</p>
+
 ## <div id="pontos_importantes"></div>Pontos importantes
 
 ### 1. Seleção dos Pais (Usando 70% da população)
