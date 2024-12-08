@@ -148,7 +148,7 @@ Inicialmente, é apresentado um menu inicial permite ao usuário escolher entre:
    <img align="center" text-align="center" width="40%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/menu.png">
 </p>
 
-Apósisso, o projeto não requer nenhuma interação com o usuário durante a execução. Ao invés disso, iremos detalhar cada componente presente no jogo:
+Após isso, o projeto não requer nenhuma interação com o usuário durante a execução. Ao invés disso, iremos detalhar cada componente presente no jogo:
 
 - **Score:** Representa a pontuação no jogo. Ela é atualizada cada vez que pelo menos um indivíduo passa pelos canos com sucesso. Essa pontuação é zerada a cada nova geração para que seja possível comparar seu desempenho com relação às anteriores.
 
