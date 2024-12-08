@@ -139,7 +139,16 @@ Para rodar este projeto, é necessário ter o **Raylib** instalado no seu sistem
 ## <div id="uso"></div>Uso
 Após a instalação, você pode começar a utilizar o projeto executando o código conforme as instruções fornecidas. Abaixo estão os detalhes sobre como interagir com a aplicação e suas funcionalidades principais.
 
-O projeto não requer nenhuma interação com o usuário durante a execução. Ao invés disso, iremos detalhar cada componente presente no jogo:
+Inicialmente, é apresentado um menu inicial permite ao usuário escolher entre:
+
+- **Treinar novamente:** inicia o algoritmo evolutivo para otimizar os pássaros.
+- **Rodar com o melhor foguete:** utiliza o pássaro com melhor desempenho salvo para jogar.
+
+<p align="center">
+   <img align="center" text-align="center" width="40%" src="https://github.com/MatheusPaivaa/FlapGeneticAI/blob/main/imgs/menu.png">
+</p>
+
+Apósisso, o projeto não requer nenhuma interação com o usuário durante a execução. Ao invés disso, iremos detalhar cada componente presente no jogo:
 
 - **Score:** Representa a pontuação no jogo. Ela é atualizada cada vez que pelo menos um indivíduo passa pelos canos com sucesso. Essa pontuação é zerada a cada nova geração para que seja possível comparar seu desempenho com relação às anteriores.
 
