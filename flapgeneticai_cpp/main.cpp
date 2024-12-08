@@ -23,6 +23,11 @@ const float BIRD_JUMP = -6.0f;
 const int POPULATION_SIZE = 1000;
 const int MAX_GENERATIONS = 1000;
 
+// -------------------- Variáveis para Zoom do Fundo -------------------- //
+float backgroundScale = 1.0f;          // Escala inicial do fundo
+float zoomSpeed = 0.07f;                // Velocidade do zoom
+float zoomAmplitude = 0.05f;           // Amplitude do zoom
+
 // -------------------- Análise do algoritimo -------------------- //
 std::vector<double> fitnessHistory;
 
@@ -361,7 +366,6 @@ void clearConsole() {
 }
 
 int main() {
-
     Bird bestBird;
 
     printBoxedTitle("Algoritmos Evolutivos Aplicados no Jogo RocketUp");
@@ -389,44 +393,49 @@ int main() {
     int generation = 1;
     std::vector<Bird> birds(POPULATION_SIZE);
 
-    bool running=true;
+    bool running = true;
 
     clearConsole();
 
     while (running && generation <= MAX_GENERATIONS) {
         // Velocidade inicial a cada geração
-        float initialObstacleSpeed=-6.0f;
-        float obstacleSpeed=initialObstacleSpeed;
+        float initialObstacleSpeed = -6.0f;
+        float obstacleSpeed = initialObstacleSpeed;
 
         Obstacle obstacle(SCREEN_WIDTH);
 
         if (option == 2) {
             birds = {bestBird};  // Rodar com o melhor pássaro
-        }{
-            for (auto &b: birds) {
-                b.x=50;
-                b.y=300;
-                b.velocity=0;
-                b.score=0;
-                b.alive=true;
-                b.fitness=0;
+        } else {
+            for (auto &b : birds) {
+                b.x = 50;
+                b.y = 300;
+                b.velocity = 0;
+                b.score = 0;
+                b.alive = true;
+                b.fitness = 0;
             }
         }
 
-        bool generationRunning=true;
-        int frames=0;
-        int score=0;
+        bool generationRunning = true;
+        int frames = 0;
+        int score = 0;
         int score_prev = 0;
 
-        while(generationRunning && running) {
+        while (generationRunning && running) {
             if (WindowShouldClose()) {
-                running=false;
+                running = false;
                 break;
             }
 
+            // Atualizar a escala do fundo para efeito de zoom
+            backgroundScale = std::max(1.0, 1.0 + static_cast<double>(zoomAmplitude) * sin(GetTime() * zoomSpeed));
+
             BeginDrawing();
             ClearBackground(BLACK);
-            DrawTexture(background,0,0,WHITE);
+            
+            // Desenhar o fundo com efeito de zoom
+            DrawTextureEx(background, (Vector2){0, 0}, 0.0f, backgroundScale, WHITE);
 
             // A velocidade baseia-se no score. A cada 10 pontos, aumentamos a dificuldade
             // Diminuindo o valor da velocidade (mais negativo = mais rápido)
@@ -435,44 +444,36 @@ int main() {
                 score_prev = score;
 
                 // Log para indicar o aumento da velocidade e gravidade
-                
                 setConsoleColor(36); // Cor ciano para o título
                 std::cout << "\nAjustes após atingir o score " << score << ":\n";
                 std::cout << "  Velocidade dos obstáculos aumentada para: " << abs(obstacleSpeed) << "\n";
-                setConsoleColor(0); // Cor ciano para o título
-
-                // Após alterar, uma possibilidade é resetar o score temporário ou algo do tipo
-                // Mas aqui, como o score só incrementa quando o cano sai da tela,
-                // ele não vai ficar preso aumentando várias vezes no mesmo frame.
-                // A cada novo cano removido e score incrementado, se atingir um novo múltiplo de 10,
-                // aumentará a velocidade novamente.
+                setConsoleColor(0); // Resetar para a cor padrão
             }
 
             obstacle.update(obstacleSpeed);
 
             // Se o obstáculo sair da tela, reseta e incrementa pontuação
             if(obstacle.offScreen()) {
-                obstacle=Obstacle(SCREEN_WIDTH);
+                obstacle = Obstacle(SCREEN_WIDTH);
                 score_prev = score;
                 score++;
-                
             }
 
-            int aliveCount=0;
-            for (auto &b: birds) {
+            int aliveCount = 0;
+            for (auto &b : birds) {
                 if(!b.alive) continue;
                 b.update();
 
                 std::vector<double> input = b.getInputs(obstacle.x, obstacle.height);
                 std::vector<double> output = b.brain.forward(input);
 
-                if(output[0]>0.5)
+                if(output[0] > 0.5)
                     b.jump();
 
                 // Verifica colisão ou se o pássaro saiu da tela
-                if (b.y<0 || b.y>SCREEN_HEIGHT - birdTex.height ||
-                    DetectCollision(obstacle.x, obstacle.height, b.x, b.y, (float)birdTex.width,(float)birdTex.height)) {
-                    b.alive=false;
+                if (b.y < 0 || b.y > SCREEN_HEIGHT - birdTex.height ||
+                    DetectCollision(obstacle.x, obstacle.height, b.x, b.y, (float)birdTex.width, (float)birdTex.height)) {
+                    b.alive = false;
                 } else {
                     aliveCount++;
                     b.score++;
@@ -482,13 +483,13 @@ int main() {
                 b.draw(birdTex);
             }
 
-            if (aliveCount==0) {
-                generationRunning=false;
+            if (aliveCount == 0) {
+                generationRunning = false;
             }
 
-            DrawText(TextFormat("Geracao: %d",generation),10,10,20,WHITE);
-            DrawText(TextFormat("Score: %d",score),10,40,20,WHITE);
-            DrawText(TextFormat("Vivos: %d",aliveCount),10,70,20,WHITE);
+            DrawText(TextFormat("Geracao: %d", generation), 10, 10, 20, WHITE);
+            DrawText(TextFormat("Score: %d", score), 10, 40, 20, WHITE);
+            DrawText(TextFormat("Vivos: %d", aliveCount), 10, 70, 20, WHITE);
 
             obstacle.draw();
 
@@ -497,15 +498,14 @@ int main() {
             frames++;
         }
 
-        double max_fitness=0;
-        double total_fit=0;
-        for (auto &b: birds) {
-            if(b.fitness>max_fitness) max_fitness=b.fitness;
-            total_fit+=b.fitness;
-
+        double max_fitness = 0;
+        double total_fit = 0;
+        for (auto &b : birds) {
+            if(b.fitness > max_fitness)
+                max_fitness = b.fitness;
+            total_fit += b.fitness;
         }
-        double avg_fitness = total_fit/birds.size();
-
+        double avg_fitness = total_fit / birds.size();
 
         double maxFitness = 0;
         for (auto &b : birds) {
@@ -515,19 +515,19 @@ int main() {
             }
         }
 
-        std::cout<<"\n✅ Geracao "<<generation<<" concluida. Max fitness: "<<max_fitness<<" , Media: "<<avg_fitness<<"\n";
+        std::cout << "\n✅ Geracao " << generation << " concluida. Max fitness: " << max_fitness << " , Media: " << avg_fitness << "\n";
 
-        if(generation>=MAX_GENERATIONS) {
-            std::cout<<"Numero maximo de geracoes alcancado.\n";
+        if(generation >= MAX_GENERATIONS) {
+            std::cout << "Numero maximo de geracoes alcancado.\n";
             break;
         }
 
         saveBestBird(bestBird);
 
         birds = evolve(birds, generation, avg_fitness);
+
         generation++;
     }
-
 
     UnloadTexture(birdTex);
     UnloadTexture(background);
