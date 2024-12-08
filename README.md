@@ -28,7 +28,7 @@ Abaixo está a estrutura de diretórios e arquivos do projeto. Cada componente f
 ___
 
 ### flapgeneticai_python e flapgeneticai_cpp
-1. **`main.py`** e **main.cpp**: Contém todo o código, incluindo a inicialização do Pygame, a definição do comportamento do pássaro e canos, e a implementação da rede neural e do algoritmo genético.
+1. **`main.py`** e **`main.cpp`**: Contém todo o código, incluindo a inicialização do Pygame, a definição do comportamento do pássaro e canos, e a implementação da rede neural e do algoritmo genético.
    
    - **NeuralNetwork**: Define a rede neural usada pelo pássaro para tomar decisões, como pular ou não. Ela tem camadas de entrada, ocultas e de saída, e usa funções de ativação como ReLU e sigmoid.
    
