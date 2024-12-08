@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include <iomanip> 
 #include <cmath>
 #include <ctime>
 #include <fstream>
@@ -440,13 +441,14 @@ int main() {
             // A velocidade baseia-se no score. A cada 10 pontos, aumentamos a dificuldade
             // Diminuindo o valor da velocidade (mais negativo = mais rápido)
             if(score > 0 && score % 10 == 0 && score_prev + 1 == score) {
-                obstacleSpeed -= 1.0f;
+                obstacleSpeed -= 0.5f;
                 score_prev = score;
 
                 // Log para indicar o aumento da velocidade e gravidade
                 setConsoleColor(36); // Cor ciano para o título
                 std::cout << "\nAjustes após atingir o score " << score << ":\n";
-                std::cout << "  Velocidade dos obstáculos aumentada para: " << abs(obstacleSpeed) << "\n";
+                std::cout << "  Velocidade dos obstáculos aumentada para: " 
+                        << std::fixed << std::setprecision(2) << obstacleSpeed * -1 << "\n";
                 setConsoleColor(0); // Resetar para a cor padrão
             }
 
@@ -485,11 +487,37 @@ int main() {
 
             if (aliveCount == 0) {
                 generationRunning = false;
+
+                if (option == 2) {
+                    // Reiniciar o pássaro
+                    bestBird.x = 50;
+                    bestBird.y = 300;
+                    bestBird.velocity = 0;
+                    bestBird.score = 0;
+                    bestBird.alive = true;
+
+                    birds = {bestBird};  // Rodar apenas com o melhor pássaro
+
+                    // Reiniciar o obstáculo
+                    obstacle = Obstacle(SCREEN_WIDTH);
+
+                    std::cout << "\nPerdeu. Reiniciando...\n";
+
+                    // Reiniciar o loop da geração
+                    generationRunning = true;
+                    score = 0;
+                    obstacleSpeed = initialObstacleSpeed;
+                    clearConsole();
+                }
             }
 
-            DrawText(TextFormat("Geracao: %d", generation), 10, 10, 20, WHITE);
+            if (option != 2) {
+                DrawText(TextFormat("Geracao: %d", generation), 10, 10, 20, WHITE);
+                DrawText(TextFormat("Vivos: %d", aliveCount), 10, 70, 20, WHITE);
+            }
+
             DrawText(TextFormat("Score: %d", score), 10, 40, 20, WHITE);
-            DrawText(TextFormat("Vivos: %d", aliveCount), 10, 70, 20, WHITE);
+
 
             obstacle.draw();
 
